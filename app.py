@@ -3,7 +3,7 @@ import flask
 import dash_auth
 import dash_bootstrap_components as dbc
 import dash
-from dash import html, dcc
+from dash import Dash, html, dcc
 from dash.exceptions import PreventUpdate
 from dash.dependencies import Input, Output, State
 import warnings
@@ -13,15 +13,15 @@ warnings.filterwarnings("ignore")
 
 from helpers.layout_utils import *
 
-from views import login as LoginScreen, azure_ticket_landing as AzureScreen
+from views import login as LoginScreen
 
-app = dash.Dash(
+app = Dash(
     __name__,
     title="T-Req's",
     update_title="T-Req's is working",
     serve_locally=True,
     prevent_initial_callbacks=False,
-    routes_pathname_prefix="/Treq/",
+    routes_pathname_prefix="/",
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
 )
 server = app.server
@@ -47,11 +47,11 @@ app.layout = base_layout
     [Input('url', 'pathname')]
 )
 def render_page_content(pathname):
-    if pathname in ["/Treq/"]:
+    if pathname in ["/"]:
         return LoginScreen.login_landing()
     
-    elif pathname in ["/Treq/azure-landing"]:
-        return AzureScreen.layout_azure_landing()
+    # elif pathname in ["/Treq/azure-landing"]:
+    #     return AzureScreen.layout_azure_landing()
     else:
         return None
 
@@ -65,29 +65,29 @@ def render_page_content(pathname):
 def authenticate_user(n_clicks, username_input, password_input):
     if n_clicks:
         if  username_input == 'admin' and password_input == 'password':
-            # Redirect to Azure landing page
-            return dcc.Location(pathname="/Treq/azure-landing", id="url")
+            # Redirect to Azure landing page,  dcc.Location(pathname="/Treq/azure-landing", id="url")
+            return "login successfull"
         else:
             return "Invalid username or password. Please try again."
 
 # Define callback for ticket submission
-@app.callback(
-    Output('error-output-azure', 'children'),
-    [Input('create_azure_ticket_button', 'n_clicks')],
-    [State('title', 'value'),
-     State('description', 'value'),
-     State('anforderer', 'value'),
-     State('story_points', 'value'),
-     State('type_picker', 'value')]
-)
-def validate_inputs(n_clicks, title, description, anforderer ,story_points, type_picker):
-    if n_clicks:
-        if not all([title, description, anforderer, story_points, type_picker]):
-            return "Please enter text in all the fields."
-        else:
-            # Process ticket submission
-            return None
+# @app.callback(
+#     Output('error-output-azure', 'children'),
+#     [Input('create_azure_ticket_button', 'n_clicks')],
+#     [State('title', 'value'),
+#      State('description', 'value'),
+#      State('anforderer', 'value'),
+#      State('story_points', 'value'),
+#      State('type_picker', 'value')]
+# )
+# def validate_inputs(n_clicks, title, description, anforderer ,story_points, type_picker):
+#     if n_clicks:
+#         if not all([title, description, anforderer, story_points, type_picker]):
+#             return "Please enter text in all the fields."
+#         else:
+#             # Process ticket submission
+#             return None
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run()

@@ -21,7 +21,7 @@ def get_login_header():
             dbc.NavItem(
                 dbc.NavLink(
                     "Logout",
-                    href="/Treq/",
+                    href="/",
                     style=Ribbon_Style,
                     id="home",
                 )
@@ -52,7 +52,7 @@ def get_logo_header():
                         align="center",
                         justify="between",
                     ),
-                    href="/Treq/",
+                    href="/",
                 ),
             ],
             fluid=True,

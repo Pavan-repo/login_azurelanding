@@ -4,7 +4,7 @@ from dash_dangerously_set_inner_html import DangerouslySetInnerHTML as ddsih
 from dash import html, dcc, Input, Output, State
 from helpers.styles import *
 #from app_singlepage import app
-import dash_core_components as dcc
+#import dash_core_components as dcc
 from dash.exceptions import PreventUpdate
 
 # Hardcoded username and password
