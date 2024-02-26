@@ -24,6 +24,7 @@ app = dash.Dash(
     routes_pathname_prefix="/Treq/",
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
 )
+server = app.server
 app.config.suppress_callback_exceptions = True
 
 
