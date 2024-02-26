@@ -1,4 +1,3 @@
-import dash
 import flask
 import dash_auth
 import dash_bootstrap_components as dbc
@@ -12,6 +11,7 @@ pd.set_option("display.max_columns", 100)
 warnings.filterwarnings("ignore")
 
 from helpers.layout_utils import *
+from helpers.create_azure_ticket import create_azure_issue
 
 from views import login as LoginScreen, azure_ticket_landing as AzureLanding
 
@@ -55,7 +55,7 @@ def render_page_content(pathname):
     else:
         return None
 
-# Define callback for login authentication
+#  callback for login authentication
 @app.callback(
     Output('login-output', 'children'),
     [Input('login-button', 'n_clicks')],
@@ -70,7 +70,7 @@ def authenticate_user(n_clicks, username_input, password_input):
         else:
             return "Invalid username or password. Please try again."
 
-#Define callback for ticket submission
+# callback for ticket submission
 @app.callback(
     Output('error-output-azure', 'children'),
     [Input('create_azure_ticket_button', 'n_clicks')],
@@ -85,9 +85,26 @@ def validate_inputs(n_clicks, title, description, anforderer ,story_points, type
         if not all([title, description, anforderer, story_points, type_picker]):
             return "Please enter text in all the fields."
         else:
-            # create_issue_function
             return None
 
+@app.callback(
+        Output('success-output-azure','children'),
+    [Input('create_azure_ticket_button', 'n_clicks')],
+    [   
+         State('title', 'value'),
+        State('description', 'value'),
+        State('anforderer', 'value'),
+        State('story_points', 'value'),
+        State('type_picker', 'value'),
+    ]
+
+)
+
+def create_azure_issue_callback(n_clicks, title, description, anforderer, story_points, type_picker):
+    if n_clicks and all([title, description, anforderer, story_points, type_picker]):
+        create_azure_issue(title, description, anforderer, story_points, type_picker)
+        return f"Azure {type_picker} created successfully"
+    return None
 
 if __name__ == "__main__":
     app.run()
