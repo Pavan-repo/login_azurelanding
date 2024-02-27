@@ -5,11 +5,12 @@ from dotenv import find_dotenv, load_dotenv
 
 load_dotenv()
 
+
 # Retrieve personal access token from environment variable
 personal_access_token = os.getenv("PERSONAL_ACCESS_TOKEN")
+
 organization_url = "https://dev.azure.com/NRG-Acceleration/"
 project = 'NRG-Acceleration'
-
 
 # Connect to Azure DevOps
 credentials = BasicAuthentication('', personal_access_token)
@@ -20,8 +21,9 @@ wit_client = connection.clients.get_work_item_tracking_client()
 
 epic_id = 1060 
 area_path = 'NRG_Agile_Enablement'
+work_item_type = "Issue"
 
-def create_azure_issue(title,description,anforderer, story_points,type_picker):
+def create_azure_issue(title,description,anforderer):
     
     new_work_item = [
             {
@@ -44,12 +46,6 @@ def create_azure_issue(title,description,anforderer, story_points,type_picker):
             },
             {
                 "op": "add",
-                "path": "/fields/System.WorkItemType",
-                "from": None,
-                "value": {'name': type_picker}
-            },
-            {
-                "op": "add",
                 "path": "/fields/System.Parent",
                 "from": None,
                 "value": epic_id
@@ -65,12 +61,6 @@ def create_azure_issue(title,description,anforderer, story_points,type_picker):
                     }
                 }
             },
-            {
-                "op": "add",
-                "path": "/fields/Microsoft.VSTS.Scheduling.StoryPoints",
-                "from": None,
-                "value": story_points
-            },
             
             {
                 "op": "add",
@@ -79,6 +69,6 @@ def create_azure_issue(title,description,anforderer, story_points,type_picker):
                 "value":f"{project}\\{area_path}" 
             }
         ]
-    created_work_item = wit_client.create_work_item(project=project,document=new_work_item, type=type_picker)
-    return (f"Created {type_picker} with ID:{created_work_item.id} ")
+    created_work_item = wit_client.create_work_item(project=project,document=new_work_item, type=work_item_type)
+    return (f"Created {work_item_type} with ID:{created_work_item.id} ")
     

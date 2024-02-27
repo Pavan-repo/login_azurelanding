@@ -77,12 +77,11 @@ def authenticate_user(n_clicks, username_input, password_input):
     [State('title', 'value'),
      State('description', 'value'),
      State('anforderer', 'value'),
-     State('story_points', 'value'),
-     State('type_picker', 'value')]
+    ]
 )
-def validate_inputs(n_clicks, title, description, anforderer ,story_points, type_picker):
+def validate_inputs(n_clicks, title, description, anforderer):
     if n_clicks:
-        if not all([title, description, anforderer, story_points, type_picker]):
+        if not all([title, description, anforderer]):
             return "Please enter text in all the fields."
         else:
             return None
@@ -91,19 +90,18 @@ def validate_inputs(n_clicks, title, description, anforderer ,story_points, type
         Output('success-output-azure','children'),
     [Input('create_azure_ticket_button', 'n_clicks')],
     [   
-         State('title', 'value'),
+        State('title', 'value'),
         State('description', 'value'),
         State('anforderer', 'value'),
-        State('story_points', 'value'),
-        State('type_picker', 'value'),
+        
     ]
 
 )
 
-def create_azure_issue_callback(n_clicks, title, description, anforderer, story_points, type_picker):
-    if n_clicks and all([title, description, anforderer, story_points, type_picker]):
-        create_azure_issue(title, description, anforderer, story_points, type_picker)
-        return f"Azure {type_picker} created successfully"
+def create_azure_issue_callback(n_clicks, title, description, anforderer):
+    if n_clicks and all([title, description, anforderer]):
+        create_azure_issue(title, description, anforderer)
+        return f"Issue created successfully "
     return None
 
 if __name__ == "__main__":

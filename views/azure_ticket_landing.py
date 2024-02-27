@@ -113,60 +113,6 @@ def layout_azure_landing():
         
         dbc.Row(
             [
-                dbc.Col(html.Label('Story Points',  style={'font-weight': 'bold', 'font-size': '20px'}), width=7),
-                dbc.Col(dbc.Input(id= 'story_points',
-                                  type='number', 
-                                  min =0, max =30, step =1,
-                                  className='input-text',
-                                  
-                                    style = {
-                                        
-                                        'width':'700px',
-                                        'height':"45px",
-                                        'padding':"10px",
-                                        "font-size":"16px",
-                                        "border-width":"1px",
-                                        
-                                    }
-                                  )
-                        , width=7)
-             ],
-            justify="center",
-        ),
-        html.Br(),
-        dbc.Row(
-            [
-                dbc.Col(html.Label(' Type',  style={'font-weight': 'bold', 'font-size': '20px'}), width=7),
-                dbc.Col(
-                    [
-                    dcc.Dropdown(id = 'type_picker', 
-                                    options = [
-                                            {'label': 'Issue', 'value': 'Issue'},
-                                            {'label': 'Task', 'value': 'Task'},
-                                            ],
-                                    value = 'Task',
-                                    className = 'inputbox2',
-                                    style = {
-                                        
-                                        'width':'700px',
-                                        'height':"45px",
-                                    #     'padding':"10px",
-                                        "font-size":"16px",
-                                    #     "border-width":"3px",
-                                        
-                                    }
-                                    ) 
-                                                    
-                    ], width= 7
-                 ),
-             ], 
-             justify="center",
-        ),
-        html.Br(),
-        html.Br(),
-        
-        dbc.Row(
-            [
                 dbc.Col(
                     html.Div(
                         id='error-output-azure',
