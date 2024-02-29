@@ -27,7 +27,8 @@ def login_landing():
                         [
                             html.Div(
                                 ddsih(
-                                    """Hello! \nLogin to <span style="color: rgb(0,83,159)"><b>T-Req's</b></span>"""
+                                    """Hello!👋 \nLogin to <span style="color: rgb(0,83,159)"><b>T-Req's</b></span>"""
+
                                 ),
                                 style={
                                     "font-size": 50,
@@ -99,16 +100,34 @@ def login_landing():
             justify="center",
             ),
             html.Br(),
-        
-            html.Div(id='login-output', 
-                     style={
-                         'textAlign': 'center',
-                         'color': 'red', 
-                         'font-size': '20px',
-                         'margin': '10px'
-                         }
-                     ),
             
+            dbc.Row(
+            [
+                dbc.Col(
+                    html.Div(
+                        id='login-output',
+                        style={
+                            "color": 'red',
+                            "font-size": 20,
+                            "textAlign": "center",
+                            "whiteSpace": "pre-wrap",
+                        },
+                    ),
+                    width={"size":4, "offset":1}  
+                ),
+            ],
+            justify="center",
+        ),
+        
+            # html.Div(id='login-output', 
+            #          style={
+            #              'textAlign': 'center',
+            #              'color': 'red', 
+            #              'font-size': '20px',
+            #              'margin': '10px'
+            #              }
+            #          ),
+             html.Br(),
             dbc.Row(
             [
                 dbc.Col(

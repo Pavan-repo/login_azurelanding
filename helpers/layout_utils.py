@@ -20,13 +20,21 @@ def get_login_header():
         [
             dbc.NavItem(
                 dbc.NavLink(
+                    "Overview",
+                    href="/tickets-overview",
+                    style=Ribbon_Style,
+                    id="overview",
+                )
+            ),
+            
+            dbc.NavItem(
+                dbc.NavLink(
                     "Logout",
                     href="/",
                     style=Ribbon_Style,
                     id="home",
                 )
-            )
-
+            ),
         ],
         sticky="top",
         fluid=True,
@@ -45,7 +53,7 @@ def get_logo_header():
                         [
                             dbc.Col(
                                 html.Img(
-                                    src="assets/images/tef_logo.png", height="75px"
+                                    src="assets/images/tef_new_logo.png", height="55px"
                                 )
                             ),
                         ],

@@ -68,7 +68,7 @@ def authenticate_user(n_clicks, username_input, password_input):
             # Redirect to Azure landing page,
             return  dcc.Location(pathname="/Treq-azure", id="url")
         else:
-            return "Invalid username or password. Please try again."
+            return "Invalid username or password 😞. Please try again."
 
 # callback for ticket submission
 @app.callback(
@@ -82,9 +82,10 @@ def authenticate_user(n_clicks, username_input, password_input):
 def validate_inputs(n_clicks, title, description, anforderer):
     if n_clicks:
         if not all([title, description, anforderer]):
-            return "Please enter text in all the fields."
-        else:
-            return None
+            return "required fields are missing! 😞"
+    else:
+        return None
+
 
 @app.callback(
         Output('success-output-azure','children'),
@@ -100,8 +101,9 @@ def validate_inputs(n_clicks, title, description, anforderer):
 
 def create_azure_issue_callback(n_clicks, title, description, anforderer):
     if n_clicks and all([title, description, anforderer]):
-        create_azure_issue(title, description, anforderer)
-        return f"Issue created successfully "
+        create_issue = create_azure_issue(title, description, anforderer)
+        return f"Issue created successfully😊 with ID: {create_issue.id}"
+
     return None
 
 if __name__ == "__main__":

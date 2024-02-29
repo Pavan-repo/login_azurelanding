@@ -21,8 +21,10 @@ def layout_azure_landing():
                     [
                         html.Div(
                         ddsih.DangerouslySetInnerHTML(
-                                """<span style="color: rgb(0,83,159)"><b>Submit your ticket details here!</b></span>"""   
-                        ),
+                                """<span style="color: rgb(0,83,159)"><b>Submit your issue details here! 🚀 </b></span>"""
+
+                        ),#<span style="color: rgb(0,83,159)"><b>Submit your issue details here! 🚀📝</b></span>
+
                         style={
                             "font-size": 49,
                             "textAlign": "center",
@@ -40,7 +42,7 @@ def layout_azure_landing():
         
         dbc.Row(
             [
-                dbc.Col(html.Label('Title' ,style={'font-weight': 'bold', 'font-size': '20px'}), width=7),
+                dbc.Col(html.Label(['Title',  html.Span('*', style={'color': 'red'})],style={'font-weight': 'bold', 'font-size': '20px'}), width=5),
                 dbc.Col(dbc.Input( id = 'title',
                                     type='text',
                                     placeholder = 'Enter title',
@@ -56,7 +58,7 @@ def layout_azure_landing():
                                         
                                     }
                                     ),
-                         width=7 
+                         width={"size":11, "offset":6} 
                         ), 
             ], 
             justify="center",
@@ -65,7 +67,7 @@ def layout_azure_landing():
         
         dbc.Row(
             [
-                dbc.Col(html.Label('Description',  style={'font-weight': 'bold', 'font-size': '20px'}), width=7),
+                dbc.Col(html.Label(['Description',  html.Span('*', style={'color': 'red'})],  style={'font-weight': 'bold', 'font-size': '20px'}), width=5),
                 dbc.Col(dbc.Textarea(id = 'description',
                                      placeholder = 'Enter description',
                                      className = 'input-text',
@@ -80,7 +82,7 @@ def layout_azure_landing():
                                         
                                     }
                                      )
-                        ,width=7)
+                        ,width={"size":11, "offset":6} )
              ], 
              justify="center",
         ),
@@ -88,7 +90,7 @@ def layout_azure_landing():
         
         dbc.Row(
             [
-                dbc.Col(html.Label('Anforderer' ,style={'font-weight': 'bold', 'font-size': '20px'}), width=7),
+                dbc.Col(html.Label(['Anforderer',  html.Span('*', style={'color': 'red'})] ,style={'font-weight': 'bold', 'font-size': '20px'}), width=5),
                 dbc.Col(dbc.Input( id = 'anforderer',
                                     type='text',
                                     placeholder = 'Enter your name',
@@ -104,7 +106,7 @@ def layout_azure_landing():
                                         
                                     }
                                     ),
-                         width=7 
+                         width={"size":11, "offset":6} 
                         ), 
             ], 
             justify="center",
@@ -123,12 +125,13 @@ def layout_azure_landing():
                             "whiteSpace": "pre-wrap",
                         },
                     ),
-                    width={"size":10, "offset":15}  
+                    width={"size":4, "offset":4}  
                 ),
             ],
             justify="left",
         ),
-
+        html.Br(),
+        
         dbc.Row(
             [
                 dbc.Col(
@@ -138,7 +141,7 @@ def layout_azure_landing():
                              style = badge_style,
                              color='primary',
                              ), 
-                    ],width={"size":5, "offset":1} 
+                    ],width={"size":5, "offset":3} 
                 ),
              ],
              justify='center'
@@ -158,7 +161,7 @@ def layout_azure_landing():
                             "whiteSpace": "pre-wrap",
                         },
                     ),
-                    width={"size":10, "offset":15} 
+                    width={"size":4, "offset":4} 
                 ),
             ],
             justify="left",

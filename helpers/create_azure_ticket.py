@@ -70,5 +70,4 @@ def create_azure_issue(title,description,anforderer):
             }
         ]
     created_work_item = wit_client.create_work_item(project=project,document=new_work_item, type=work_item_type)
-    return (f"Created {work_item_type} with ID:{created_work_item.id} ")
-    
+    return created_work_item
