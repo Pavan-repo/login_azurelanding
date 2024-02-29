@@ -20,7 +20,7 @@ def get_login_header():
         [
             dbc.NavItem(
                 dbc.NavLink(
-                    "Overview",
+                    "Home",
                     href="/tickets-overview",
                     style=Ribbon_Style,
                     id="overview",

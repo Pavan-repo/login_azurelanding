@@ -293,10 +293,10 @@ badge_style = {
     "textAlign": "center",
     "fontFamily": "Tesco Modern",
     "fontWeight": 700,
-    "fontSize": "25px", 
+    "fontSize": "30px", 
     "fontFamily": "Tesco Modern",
     "borderRadius": "8px",
-    "width" : "200px",
+    "width" : "570px",
     "height" : "50px",
     "textAlign": "center",
 }

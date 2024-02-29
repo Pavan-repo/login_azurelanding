@@ -53,7 +53,7 @@ def layout_azure_landing():
                                         'width':'700px',
                                         'height':"55px",
                                         'padding':"10px",
-                                        "font-size":"16px",
+                                        "font-size":"18px",
                                         "border-width":"1px",
                                         
                                     }
@@ -75,9 +75,9 @@ def layout_azure_landing():
                                     style = {
                                         
                                         'width':'700px',
-                                        'height':"75px",
+                                        'height':"125px",
                                         'padding':"10px",
-                                        "font-size":"16px",
+                                        "font-size":"18px",
                                         "border-width":"1px",
                                         
                                     }
@@ -101,7 +101,7 @@ def layout_azure_landing():
                                         'width':'700px',
                                         'height':"45px",
                                         'padding':"10px",
-                                        "font-size":"16px",
+                                        "font-size":"18px",
                                         "border-width":"1px",
                                         
                                     }
@@ -111,6 +111,7 @@ def layout_azure_landing():
             ], 
             justify="center",
         ),
+        html.Br(),
         html.Br(),
         
         dbc.Row(
@@ -132,16 +133,28 @@ def layout_azure_landing():
         ),
         html.Br(),
         
+    
         dbc.Row(
             [
                 dbc.Col(
                     [
                     dbc.Button('Create Ticket', 
                             id= 'create_azure_ticket_button',
-                             style = badge_style,
+                             style = {
+                                    "backgroundColor": bg_color_2,
+                                    "textAlign": "center",
+                                    "fontFamily": "Tesco Modern",
+                                    "fontWeight": 700,
+                                    "fontSize": "30px", 
+                                    "fontFamily": "Tesco Modern",
+                                    "borderRadius": "8px",
+                                    "width" : "700px",
+                                    "height" : "45px",
+                                    "textAlign": "center",
+                                },
                              color='primary',
                              ), 
-                    ],width={"size":5, "offset":3} 
+                    ],width=5
                 ),
              ],
              justify='center'
@@ -173,29 +186,5 @@ def layout_azure_landing():
     fluid=True
 )
     
-###########################################################################################################################
-# Call backs
-###########################################################################################################################
-
-# @app.callback(
-#     Output('error-output-azure', 'children'),
-#     [
-#         Input('create_azure_ticket_button', 'n_clicks'),
-#     ],
-#     [   
-#         State('title', 'value'),
-#         State('description', 'value'),
-#         State('anforderer', 'value'),
-#         State('story_points', 'value'),
-#         State('type_picker', 'value'),
-#     ]
-# )
-# def validate_inputs(n_clicks, title, description, anforderer ,story_points, type_picker):
-#     if n_clicks:
-#         if not all ([title, description, anforderer, story_points, type_picker]):
-#             return "Please enter text in all the fields."
-#         else:
-#             #create_azure_issue(title, description, anforderer, story_points, type_picker)
-#             return None 
 
 

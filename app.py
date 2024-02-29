@@ -102,7 +102,7 @@ def validate_inputs(n_clicks, title, description, anforderer):
 def create_azure_issue_callback(n_clicks, title, description, anforderer):
     if n_clicks and all([title, description, anforderer]):
         create_issue = create_azure_issue(title, description, anforderer)
-        return f"Issue created successfully😊 with ID: {create_issue.id}"
+        return f"Issue created successfully✔️ with ID: {create_issue.id}"
 
     return None
 

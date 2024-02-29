@@ -49,17 +49,17 @@ def login_landing():
             
             dbc.Row(
             [
-                dbc.Col(html.Label('Username' ,style={'font-weight': 'bold', 'font-size': '20px'}),width=1),
+                #dbc.Col(html.Label('Username' ,style={'font-weight': 'bold', 'font-size': '20px'}),width=1),
                 dbc.Col(dbc.Input( id = 'username-input',
                                     type='text',
-                                    placeholder = 'Enter email',
+                                    placeholder = 'Type your username',
                                     className = 'inputbox1',
                                     style = {
                                         
-                                        'width':'500px',
-                                        'height':"45px",
+                                        'width':'570px',
+                                        'height':"50px",
                                         'padding':"10px",
-                                        "font-size":"16px",
+                                        "font-size":"18px",
                                         "border-width":"3px",  
                                     }
                                     ),
@@ -74,17 +74,17 @@ def login_landing():
             
             dbc.Row(
             [
-                dbc.Col(html.Label('Password' ,style={'font-weight': 'bold', 'font-size': '20px'}),width=1),
+                #dbc.Col(html.Label('Password' ,style={'font-weight': 'bold', 'font-size': '22px'}),width=1),
                 dbc.Col(dbc.Input( id = 'password-input',
                                     type='password',
-                                    placeholder = 'Enter password',
+                                    placeholder = 'Type your password',
                                     className = 'inputbox2',
                                     style = {
                                         
-                                        'width':'500px',
-                                        'height':"45px",
+                                        'width':'570px',
+                                        'height':"50px",
                                         'padding':"10px",
-                                        "font-size":"16px",
+                                        "font-size":"18px",
                                         "border-width":"3px",
                                         
                                     }
@@ -100,6 +100,7 @@ def login_landing():
             justify="center",
             ),
             html.Br(),
+            html.Br(),
             
             dbc.Row(
             [
@@ -108,12 +109,12 @@ def login_landing():
                         id='login-output',
                         style={
                             "color": 'red',
-                            "font-size": 20,
+                            "font-size": 25,
                             "textAlign": "center",
                             "whiteSpace": "pre-wrap",
                         },
                     ),
-                    width={"size":4, "offset":1}  
+                    width={"size":4, "offset":0}  
                 ),
             ],
             justify="center",
@@ -128,6 +129,8 @@ def login_landing():
             #              }
             #          ),
              html.Br(),
+             html.Br(),
+             
             dbc.Row(
             [
                 dbc.Col(
@@ -137,7 +140,7 @@ def login_landing():
                             style = badge_style,
                              color='primary',
                              ), 
-                    ],width={"size":2, "offset":1} 
+                    ],width=4 
                 ),
              ],
              justify='center'
@@ -146,26 +149,3 @@ def login_landing():
         style= CONTAINER_STYLE,
         fluid=True
     )
-
-
-
-# @app.callback(
-#     Output('login-output', 'children'),
-#     [Input('login-button', 'n_clicks')],
-#     [
-#     State('username-input', 'value'),
-#     State('password-input','value')
-        
-#     ]
-    
-# )
-# def authenticate_user(n_clicks, username_input, password_input):
-#     if n_clicks:
-#         if  username_input == VALID_USERNAME and password_input == VALID_PASSWORD:
-#             # Redirect to Azure landing page
-#             return dcc.Location(pathname="/Treq/azure-landing", id="url")
-#         else:
-#             return "Invalid username or password. Please try again."
-#     else:
-#         raise PreventUpdate
-
