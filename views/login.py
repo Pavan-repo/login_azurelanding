@@ -82,6 +82,27 @@ justify="center"
 justify="center"
             ),
             
+            dbc.Row(
+                [
+                    dbc.Col(
+                        html.Div(
+                            id='login-output',
+                            style={
+                                "color": 'red',
+                                "font-size": 25,
+                                "textAlign": "center",
+                                "whiteSpace": "pre-wrap",
+                            },
+                        ),
+                        width=8,
+                    md={'size': 3, 'offset': 0},
+                    lg={'size': 3, 'offset': 0},
+                    xl={'size': 2, 'offset': 0},
+                    ),
+                ],
+justify="center",
+            ),
+            
             html.Br(),
             html.Br(),
             
@@ -118,3 +139,30 @@ justify="center"
         style=CONTAINER_STYLE,
         fluid=True,
     )
+
+input_style = {
+    'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+    'font-size': '20px',
+    'text-align': 'start',
+    'color': '#666666',
+    'background': '#ffffff',
+    'opacity': '0.75',
+    'width': '100%',
+    'height': '48px',
+    'padding': '0px 20px',
+    'border-radius': '20px',
+    'border': '2px solid rgba(0, 0, 0, 0.3)',
+}
+
+button_style = {
+    'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+    'font-size': '18px',
+    'fontWeight': 500,
+    'color': '#ffffff',
+    'background': '#0066ff',
+    'opacity': '0.75',
+    'width': '100%',
+    'height': '48px',
+    'border-radius': '20px',
+    'border': '2px solid rgba(0, 0, 0, 0.3)',
+}
