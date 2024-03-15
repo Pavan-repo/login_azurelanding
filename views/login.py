@@ -3,9 +3,7 @@ import dash_bootstrap_components as dbc
 from dash_dangerously_set_inner_html import DangerouslySetInnerHTML as ddsih
 from dash import html, dcc, Input, Output, State
 from helpers.styles import *
-#from app_singlepage import app
-#import dash_core_components as dcc
-from dash.exceptions import PreventUpdate
+from helpers.layout_utils import *
 
 # Hardcoded username and password
 VALID_USERNAME = 'admin'
@@ -14,7 +12,10 @@ VALID_PASSWORD = 'password'
 # Login screen layout
 def login_landing():
     return dbc.Container(
-        [
+        [   
+            
+            #get_login_header(),
+            get_logo_header(),
             html.Br(),
             html.Br(), 
             html.Br(), 
@@ -27,7 +28,7 @@ def login_landing():
                         [
                             html.Div(
                                 ddsih(
-                                    """Hello!👋 \nLogin to <span style="color: rgb(0,83,159)"><b>T-Req's</b></span>"""
+                                    """Hello!👋 \nLogin to T-Req's"""
 
                                 ),
                                 style={
@@ -37,6 +38,7 @@ def login_landing():
                                 },
                             ), 
                         ], width="auto"
+                        #{"size":3, "offset":0}
                               
                     ),
                 ], justify="center"
@@ -45,26 +47,29 @@ def login_landing():
             html.Br(),
             html.Br(),
             
-            
-            
             dbc.Row(
             [
-                #dbc.Col(html.Label('Username' ,style={'font-weight': 'bold', 'font-size': '20px'}),width=1),
-                dbc.Col(dbc.Input( id = 'username-input',
-                                    type='text',
-                                    placeholder = 'Type your username',
-                                    className = 'inputbox1',
-                                    style = {
-                                        
-                                        'width':'570px',
-                                        'height':"50px",
-                                        'padding':"10px",
-                                        "font-size":"18px",
-                                        "border-width":"3px",  
-                                    }
-                                    ),
-         
-                         width=4
+                dbc.Col(dbc.Input( id='username-input',
+                                   type='text',
+                                   placeholder='Username',
+                                   className='input-text',
+                                   style={
+                                       'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                                       'font-size': '20px',
+                                       'line-height': 'normal',
+                                       'text-align': 'start',
+                                       'letter-spacing': 'normal',
+                                       'color': '#666666',
+                                       'background': '#ffffff',
+                                       'opacity': '0.75',
+                                       'width': '450px',
+                                       'height': '68px',
+                                       'padding': '0px 20px',
+                                       'border-radius': '20px',
+                                       'border': '2px solid rgba(0, 0, 0, 0.3)',
+                                   },
+                                   ),
+                         width={"size":3, "offset":0} 
                         ), 
             ], 
             justify="center",
@@ -74,78 +79,92 @@ def login_landing():
             
             dbc.Row(
             [
-                #dbc.Col(html.Label('Password' ,style={'font-weight': 'bold', 'font-size': '22px'}),width=1),
-                dbc.Col(dbc.Input( id = 'password-input',
-                                    type='password',
-                                    placeholder = 'Type your password',
-                                    className = 'inputbox2',
-                                    style = {
-                                        
-                                        'width':'570px',
-                                        'height':"50px",
-                                        'padding':"10px",
-                                        "font-size":"18px",
-                                        "border-width":"3px",
-                                        
-                                    }
-                                    
-                                    
-                                    
-                                    ),
-                                   
-                                  
-                         width=4
+                dbc.Col(dbc.Input( id='password-input',
+                                   type='password',
+                                   placeholder='Password',
+                                   className='input-text',
+                                   style={
+                                       'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                                       'font-size': '20px',
+                                       'line-height': 'normal',
+                                       'text-align': 'start',
+                                       'letter-spacing': 'normal',
+                                       'color': '#000000',
+                                       'background': '#ffffff',
+                                       'opacity': '0.75',
+                                       'width': '450px',
+                                       'height': '68px',
+                                       'padding': '0px 20px',
+                                       'border-radius': '20px',
+                                       'border': '2px solid rgba(0, 0, 0, 0.3)',
+                                   },
+                                   ),
+                         width={"size":3, "offset":0} 
                         ), 
             ], 
             justify="center",
             ),
             html.Br(),
-            html.Br(),
-            
             dbc.Row(
             [
                 dbc.Col(
-                    html.Div(
-                        id='login-output',
-                        style={
-                            "color": 'red',
-                            "font-size": 25,
-                            "textAlign": "center",
-                            "whiteSpace": "pre-wrap",
-                        },
-                    ),
-                    width={"size":4, "offset":0}  
+                    html.A("Forgot Password?", href="#", style={"font-size": "16px", 'background': '#ffffff'}),
+                    width={"size":3, "offset":0}  
                 ),
             ],
             justify="center",
-        ),
-        
-            # html.Div(id='login-output', 
-            #          style={
-            #              'textAlign': 'center',
-            #              'color': 'red', 
-            #              'font-size': '20px',
-            #              'margin': '10px'
-            #              }
-            #          ),
-             html.Br(),
-             html.Br(),
-             
+            ),
+           
+            
             dbc.Row(
-            [
-                dbc.Col(
-                    [
-                    dbc.Button('Login', 
-                            id= 'login-button',
-                            style = badge_style,
-                             color='primary',
-                             ), 
-                    ],width=4 
-                ),
-             ],
-             justify='center'
-        ),   
+                [
+                    dbc.Col(
+                        html.Div(
+                            id='login-output',
+                            style={
+                                "color": 'red',
+                                "font-size": 25,
+                                "textAlign": "center",
+                                "whiteSpace": "pre-wrap",
+                            },
+                        ),
+                        width={"size":3, "offset":0}  
+                    ),
+                ],
+                justify="center",
+            ),
+        
+            html.Br(),
+            html.Br(),
+            
+            dbc.Row(
+                [
+                    dbc.Col(
+                        dbc.Button('Anmelden', 
+                                   id='login-button',
+                                   style={
+                                       'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                                       'font-size': '30px',
+                                       'line-height': 'normal',
+                                       "fontWeight": 700,
+                                       'text-align': 'center',
+                                       'letter-spacing': 'normal',
+                                       'color': '#ffffff',
+                                       'background': '#0066ff',
+                                       'opacity': '0.75',
+                                       'width': '450px',
+                                       'height': '68px',
+                                       'border-radius': '5px',
+                                       'border': '2px solid rgba(0, 0, 0, 0.3)',
+                                   },
+                                   color='primary',
+                                   ), 
+                        width={"size":3, "offset":0} 
+                    ),
+                ],
+                justify='center'
+            ),   
         ],
-        style= CONTAINER_STYLE,
-        fluid=True
+        style=CONTAINER_STYLE,
+        fluid=True,
     )

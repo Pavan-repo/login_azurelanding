@@ -18,10 +18,31 @@ import pandas as pd
 def get_login_header():
     return dbc.NavbarSimple(
         [
+            
             dbc.NavItem(
                 dbc.NavLink(
-                    "Home",
-                    href="/tickets-overview",
+                    "Abmelden",
+                    href="/",
+                    style=Ribbon_Style,
+                    id="logout",
+                )
+            ),
+        ],
+        sticky="top",
+        fluid=True,
+        color=bg_color_2,
+        id="get-login-header-navbar",
+    )
+
+
+
+def get_home_header():
+    return dbc.NavbarSimple(
+        [    
+            dbc.NavItem(
+                dbc.NavLink(
+                    "Übersicht",
+                    href="/Treq-overview",
                     style=Ribbon_Style,
                     id="overview",
                 )
@@ -29,7 +50,43 @@ def get_login_header():
             
             dbc.NavItem(
                 dbc.NavLink(
-                    "Logout",
+                    "Abmelden",
+                    href="/",
+                    style=Ribbon_Style,
+                    id="home",
+                )
+            ),
+        ],
+        sticky="top",
+        fluid=True,
+        color=bg_color_2,
+        id="get-login-header-navbar",
+    )
+    
+def get_header():
+    return dbc.NavbarSimple(
+        [
+            dbc.NavItem(
+                dbc.NavLink(
+                    "Startseite",
+                    href="/Treq-home",
+                    style=Ribbon_Style,
+                    id="home",
+                )
+            ),
+            
+            dbc.NavItem(
+                dbc.NavLink(
+                    "Übersicht",
+                    href="/Treq-overview",
+                    style=Ribbon_Style,
+                    id="overview",
+                )
+            ),
+            
+            dbc.NavItem(
+                dbc.NavLink(
+                    "Abmelden",
                     href="/",
                     style=Ribbon_Style,
                     id="home",
@@ -61,9 +118,11 @@ def get_logo_header():
                         justify="between",
                     ),
                     href="/",
+                    
                 ),
             ],
             fluid=True,
+        
         ),
     )
 

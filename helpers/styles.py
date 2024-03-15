@@ -1,55 +1,61 @@
 import builtins
 
+
+
+
+
+
 ###########################################################################################################################
 # COLOR
 ###########################################################################################################################
 
 primary_palette = {
         "colorblue": "rgb(0,83,159)",
+        "blue": "#0066ff",
         "colorred": "rgb(238,28,46)",
         "white": "rgb(255,255,255",
         "dark_grey": "rgb(110,103,103)",
         "black": "rgb(0, 0, 0)",
     }
 
-# secondary_palette = {
-#         "colororange": "rgb(255,166,38)",
-#         "colorsalmon": "rgb(255,125,130)",
-#         "colorturquoise": "rgb(0,188,212)",
-#         "colorteal": "rgb(0,191,165)",
-#         "colorsand": "rgb(204,186,161)",
-#         "colorpink": "rgb(255,128,171)",
-#         "colorbronze": "rgb(157,28,23)",
-#         "coloryellow": "rgb(250,189,43)",
-#         "coloremerald": "rgb(12,126,103)",
-#         "colorgreen": "rgb(105,178,74)",
-#         "colorindigo": "rgb(92,107,192)",
-#         "colorpurple": "rgb(156,38,176)",
-#         "colorlight_orange": "rgb(255,224,178)",
-#         "colorlight_salmon": "rgb(255,204,191)",
-#         "colorlight_turquoise": "rgb(178,235,242)",
-#         "colorlight_teal": "rgb(178,223,219)",
-#         "colorlight_sand": "rgb(245,240,224)",
-#         "colorlight_pink": "rgb(248,187,208)",
-#         "colordark_orange": "rgb(214,67,0)",
-#         "colordark_salmon": "rgb(199,74,82)",
-#         "colordark_turquoise": "rgb(0,131,143)",
-#         "colordark_teal": "rgb(0,77,64)",
-#         "colordark_sand": "rgb(123,107,89)",
-#         "colorlight_blue_grey": "rgb(176,191,196)",
-#         "colorlight_emerald": "rgb(166,207,173)",
-#         "colorlight_green": "rgb(197,225,165)",
-#         "colorlight_grey": "rgb(246,246,246)",
-#         "colorlight_indigo": "rgb(197,202,233)",
-#         "colorlight_purple": "rgb(224,191,232)",
-#         "colordark_blue_grey": "rgb(56,71,79)",
-#         "colordark_emerald": "rgb(38,96,84)",
-#         "colordark_green": "rgb(51,105,30)",
-#         "colordark_indigo": "rgb(26,35,126)",
-#         "colordark_pink": "rgb(200,27,96)",
-#         "colordark_purple": "rgb(92,41,87)",
-#         "colorpurple": "rgb(156,38,176)",
-#     }
+secondary_palette = {
+        "colororange": "rgb(255,166,38)",
+        "colorsalmon": "rgb(255,125,130)",
+        "colorturquoise": "rgb(0,188,212)",
+        "colorteal": "rgb(0,191,165)",
+        "colorsand": "rgb(204,186,161)",
+        "colorpink": "rgb(255,128,171)",
+        "colorbronze": "rgb(157,28,23)",
+        "coloryellow": "rgb(250,189,43)",
+        "coloremerald": "rgb(12,126,103)",
+        "colorgreen": "rgb(105,178,74)",
+        "colorindigo": "rgb(92,107,192)",
+        "colorpurple": "rgb(156,38,176)",
+        "colorlight_orange": "rgb(255,224,178)",
+        "colorlight_salmon": "rgb(255,204,191)",
+        "colorlight_turquoise": "rgb(178,235,242)",
+        "colorlight_teal": "rgb(178,223,219)",
+        "colorlight_sand": "rgb(245,240,224)",
+        "colorlight_pink": "rgb(248,187,208)",
+        "colordark_orange": "rgb(214,67,0)",
+        "colordark_salmon": "rgb(199,74,82)",
+        "colordark_turquoise": "rgb(0,131,143)",
+        "colordark_teal": "rgb(0,77,64)",
+        "colordark_sand": "rgb(123,107,89)",
+        "colorlight_blue_grey": "rgb(176,191,196)",
+        "colorlight_emerald": "rgb(166,207,173)",
+        "colorlight_green": "rgb(197,225,165)",
+        "colorlight_grey": "rgb(246,246,246)",
+        "colorlight_indigo": "rgb(197,202,233)",
+        "colorlight_purple": "rgb(224,191,232)",
+        "colordark_blue_grey": "rgb(56,71,79)",
+        "colordark_emerald": "rgb(38,96,84)",
+        "colordark_green": "rgb(51,105,30)",
+        "colordark_indigo": "rgb(26,35,126)",
+        "colordark_pink": "rgb(200,27,96)",
+        "colordark_purple": "rgb(92,41,87)",
+        "colorpurple": "rgb(156,38,176)",
+    }
 
 # interaction_palette = {
 #     "highlight_blue": "rgb(0,126,179)",
@@ -80,7 +86,7 @@ bg_color_1 = primary_palette["white"]
 bg_color_2 = primary_palette["colorblue"]
 bg_color_3 = primary_palette["black"]
 bg_color_4 = primary_palette["dark_grey"]
-#hover_color = secondary_palette["colorlight_turquoise"]
+hover_color = secondary_palette["colorlight_turquoise"]
 base_div_style = {"overflowX": "none", "overflowY": "auto"}
 
 # footer_div_style = {
@@ -117,6 +123,7 @@ NAVBAR_STYLE = {
     "backgroundColor": bg_color_3,
     "color": "white",
     "fontWeight": 700,
+    "fluid": True,
 }
 
 # Chart_Header = {
@@ -184,25 +191,26 @@ NAVBAR_STYLE = {
 #     "textAlign": "center",
 # }
 
-# Inline with Tesco Site
+
 Ribbon_Style = {
     "fontSize": "20px",
+    'width': '100%',
     "border": "none",
     "color": bg_color_1,
     "weight": 700,
     "fontWeight": "bold",
     "active": {"background-color": "#4CAF50"},
-   # "borderRight": "1.5px solid rgb(246,246,246)",
+    #"borderRight": "1.5px solid rgb(246,246,246)",
     "margin": 0.5,
     "padding": -0.5,
-    # "border" : 0,
+    #"border" : 0,
     "verticalAlign": "baseline",
-    # "cursor":"pointer",
-    # "fontStyle": "normal",
-    # "fontVariantLigatures": "normal",
-    # "fontVariantCaps": "normal",
-    # "fontStretch": "normal",
-    # "lineHeight": "1.5",
+    "cursor":"pointer",
+    "fontStyle": "normal",
+    "fontVariantLigatures": "normal",
+    "fontVariantCaps": "normal",
+    "fontStretch": "normal",
+    "lineHeight": "1.5",
 }
 
 # LastItem_Ribbon_Style = {
@@ -264,16 +272,16 @@ btn_hidden_style = {"display": "none"}
 #     "borderRadius": "8px",
 # }
 
-# summary_btn_style = {
-#     "color": bg_color_2,
-#     "backgroundColor": bg_color_1,
-#     "fontWeight": 700,
-#     "fontSize": "25px", 
-#     "fontFamily": "Tesco Modern",
-#     "borderRadius": "8px",
-#     "width" : "400px",
-#     "height" : "60px"
-# }
+summary_btn_style = {
+    "color": bg_color_2,
+    "backgroundColor": bg_color_1,
+    "fontWeight": 700,
+    "fontSize": "25px", 
+    "fontFamily": "Tesco Modern",
+    "borderRadius": "8px",
+    "width" : "350px",
+    "height" : "55px"
+}
 
 # summary_btn_style_header = {
 #     "color": bg_color_2,
@@ -288,15 +296,17 @@ btn_hidden_style = {"display": "none"}
 # }
 
 
+
+
 badge_style = {
     "backgroundColor": bg_color_2,
     "textAlign": "center",
     "fontFamily": "Tesco Modern",
     "fontWeight": 700,
-    "fontSize": "30px", 
+    "fontSize": "25px", 
     "fontFamily": "Tesco Modern",
     "borderRadius": "8px",
-    "width" : "570px",
+    "width" : "350px",
     "height" : "50px",
     "textAlign": "center",
 }
