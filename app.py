@@ -231,4 +231,4 @@ def fetch_tickets_and_validate(n_clicks, anforderer):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
