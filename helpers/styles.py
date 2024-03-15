@@ -107,11 +107,11 @@ base_div_style = {"overflowX": "none", "overflowY": "auto"}
 
 # the main container style
 CONTAINER_STYLE = {
-    "margin": "none",
+    "margin": "auto",
     "padding": "none",
     "overflowY": "auto",
     "overflowX": "none",
-    "maxWidth": "none",
+    "maxWidth": "auto",
     "maxHeight": "none",
     "border": "none",
     "backgroundColor": bg_color_1,
@@ -122,6 +122,7 @@ NAVBAR_STYLE = {
     "border": "none",
     "backgroundColor": bg_color_3,
     "color": "white",
+    "maxWidth": "auto",
     "fontWeight": 700,
     "fluid": True,
 }
