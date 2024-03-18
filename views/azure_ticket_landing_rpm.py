@@ -47,7 +47,7 @@ def layout_azure_landing_rpm():
         dbc.Row(
             [
                 dbc.Col(html.Label(['Titel',  html.Span('*', style={'color': 'red'})],style={'font-weight': 'bold', 'font-size': '20px'}), width=4),
-                dbc.Col(dbc.Input( id = 'title-rpm',
+                dbc.Col(dbc.Input( id = 'title',
                                     type='text',
                                     #placeholder = 'Issue title',
                                     className = 'input-text',
@@ -79,7 +79,7 @@ def layout_azure_landing_rpm():
         dbc.Row(
             [
                 dbc.Col(html.Label(['Beschreibung',  html.Span('*', style={'color': 'red'})],  style={'font-weight': 'bold', 'font-size': '20px'}), width=4),
-                dbc.Col(dbc.Textarea(id = 'description-rpm',
+                dbc.Col(dbc.Textarea(id = 'description',
                                      #placeholder = 'Issue description',
                                      className = 'input-text',
                                      
@@ -111,7 +111,7 @@ def layout_azure_landing_rpm():
         dbc.Row(
             [
                 dbc.Col(html.Label(['Anforderer',  html.Span('*', style={'color': 'red'})] ,style={'font-weight': 'bold', 'font-size': '20px'}), width=4),
-                dbc.Col(dbc.Input( id = 'anforderer-rpm',
+                dbc.Col(dbc.Input( id = 'anforderer',
                                     type='text',
                                     placeholder = 'Name des Anforderers',
                                     className = 'input-text',
@@ -146,7 +146,7 @@ def layout_azure_landing_rpm():
             [
                 dbc.Col(
                     html.Div(
-                        id='error-output-azure-rpm',
+                        id='error-output-azure',
                         style={
                             "color": 'red',
                             "font-size": 30,
@@ -167,7 +167,7 @@ def layout_azure_landing_rpm():
                 dbc.Col(
                     [
                     dbc.Button('Issue erstellen', 
-                            id= 'create_azure_ticket_button-rpm',
+                            id= 'create_azure_ticket_button',
                             style = {
                                  'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
                                     'font-size': '27px',
@@ -197,7 +197,7 @@ def layout_azure_landing_rpm():
             [
                 dbc.Col(
                     html.Div(
-                        id='success-output-azure-rpm',
+                        id='success-output-azure',
                         style={
                             "color": 'green',
                             "font-size": 30,
@@ -217,5 +217,3 @@ def layout_azure_landing_rpm():
     fluid=True
 )
     
-
-

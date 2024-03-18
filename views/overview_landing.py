@@ -38,78 +38,79 @@ def overview_landing():
                             html.Div(
                                 ddsih.DangerouslySetInnerHTML(
                                     """
-                                    <b>Geben sie unten den Anforderernamen ein, um die erstellten Issue anzuzeigen!</b>
+                                    <b>Geben Sie bitte den Anforderer ein, um die erstellten Anforderungen anzuzeigen!</b>
                                     """
                                 ),
                                 style={
-                                    "font-size": 40,
-                                    "textAlign": "center",
+                                        "font-size": "3rem", 
+                                        "textAlign": "center",
+                                       # "whiteSpace": "pre-wrap",
                                 },
                             ),
                         ],
-                        width="11",
+                    width=12,
+
                     ),
                 ],
-                justify="center",
+               # justify="center",
             ),
 
             html.Br(),
             html.Br(),
             html.Br(),
-            html.Br(),
+
             
 
             dbc.Row(
-                [
-                    dbc.Col(
+                dbc.Col(
+                    html.Div(
                         [
                             dbc.Input(
                                 id='anforderer-input',
                                 type='search',
-                                placeholder=' Anforderer name',
+                                placeholder='Anforderer',
                                 className='input-text',
                                 style={
                                     'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
-                                    'width': '430px',
                                     'line-height': 'normal',
                                     'text-align': 'start',
-                                    'display': 'inline-block',
                                     'opacity': '0.75',
                                     'color': '#000000',
                                     'letter-spacing': 'normal',
                                     'background': '#ffffff',
-                                    'height': "52px",
+                                    'height': "48px",
                                     'padding': '0px 20px',
-                                    'border-radius': '0px',
+                                    'border-radius': '5px',
                                     'border': '2px solid rgba(0, 0, 0, 0.3)',
-                                    "font-size": "22px"
+                                    "font-size": "20px",
+                                    'margin-right': '10px',  
                                 },
                             ),
-                        ],width={"size":3, "offset":3},
-                    ),
-                    
-                    dbc.Col(
-                        [
-                            dbc.Button(html.Span([html.I(className="fa fa-search"), " Search"]),
-                                id='submit-button', 
+                            dbc.Button(
+                                html.Span([html.I(className="fa fa-search")]),
+                                id='submit-button',
                                 n_clicks=0,
                                 style={
-                                    'width': '90px',
-                                    'height': "51px",
-                                    'display': 'inline-block',
+                                    'height': "46px",
+                                    'width': "55px",
+                                    "font-size": "20px",
+                                    'border-radius': '5px',
                                     "backgroundColor": '#0066ff',
-                                    "font-size": "30px",
-                                    "textAlign": "center",
-                                    "whiteSpace": "pre-wrap",
-                                    "margin-right": "20px"
+                                    "border": "none",
+                                    "padding": 0,
                                 },
                                 color='primary',
                             ),
                         ],
-                        width=4,
+                        className='d-flex',
+                        style={'justify-content': 'center', 'margin': 'auto', 'width': '65%'},
                     ),
-                ],
-                justify="center"
+                    width=12,
+                    md={'size': 8, 'offset': 2},
+                    lg={'size': 6, 'offset': 3},
+                    xl={'size': 6, 'offset': 3},
+                ),
+                className='mb-3',
             ),
 
             html.Br(),
@@ -124,7 +125,7 @@ def overview_landing():
                         id='error-output-overview',
                         style={
                             "color": 'red',
-                            "font-size": 30,
+                            "font-size": 20,
                             "textAlign": "center",
                             "whiteSpace": "pre-wrap",
                         },
@@ -141,6 +142,10 @@ def overview_landing():
         style=CONTAINER_STYLE,
         fluid=True
     )
+
+
+
+
 
 
 # Callback to fetch and display tickets based on the provided name

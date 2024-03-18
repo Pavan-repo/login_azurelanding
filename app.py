@@ -166,7 +166,7 @@ def fetch_tickets_and_validate(n_clicks, anforderer):
                     selected_rows=[],
                     page_action="native",
                     page_current= 0,
-                    page_size= 4,
+                    page_size= 5,
                     style_table={'overflowX': 'auto'},
                     style_data={
                         'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',

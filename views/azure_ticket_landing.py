@@ -1,3 +1,4 @@
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
@@ -24,7 +25,7 @@ def layout_azure_landing():
                     [
                         html.Div(
                         ddsih.DangerouslySetInnerHTML(
-                                """<b>Geben sie unten die details ein, um ein Issue zu erstellen 🚀</b> """
+                                """<b>Geben sie unten die details ein, um ein Issue zu erstellen</b> """
 
                         ),#<span style="color: rgb(0,83,159)"><b>Submit your issue details here! 🚀📝</b></span>
 
@@ -216,6 +217,3 @@ def layout_azure_landing():
     style=CONTAINER_STYLE,
     fluid=True
 )
-    
-
-

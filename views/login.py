@@ -27,7 +27,7 @@ def login_landing():
             dbc.Row(
                 dbc.Col(
                     html.Div(
-                        ddsih("""Hello!👋 \nLogin to T-Reqs"""),
+                        ddsih("""Hello!👋 <b>\nLogin to T-Reqs</b>"""),
                         style={
                             "font-size": "3rem", 
                             "textAlign": "center",
@@ -163,6 +163,6 @@ button_style = {
     'opacity': '0.75',
     'width': '100%',
     'height': '48px',
-    'border-radius': '20px',
+    'border-radius': '5px',
     'border': '2px solid rgba(0, 0, 0, 0.3)',
 }

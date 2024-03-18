@@ -193,6 +193,7 @@ NAVBAR_STYLE = {
 # }
 
 
+
 Ribbon_Style = {
     "fontSize": "20px",
     'width': '100%',
