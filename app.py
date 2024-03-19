@@ -79,7 +79,7 @@ def authenticate_user(n_clicks, username_input, password_input):
             # Redirect to Azure landing page,
             return  dcc.Location(pathname="/Treq-home", id="url")
         else:
-            return "Falscher Benutzername oder Passwort 😞. Bitte versuchen Sie es erneut."
+            return "Bitte versuchen Sie es erneut."
 
 # callback for ticket submission
 @app.callback(
@@ -113,7 +113,7 @@ def validate_inputs(n_clicks, title, description, anforderer):
 def create_azure_issue_callback(n_clicks, title, description, anforderer):
     if n_clicks and all([title, description, anforderer]):
         create_issue = create_azure_issue(title, description, anforderer)
-        return f"Issue erfolgreich erstellt✔️ with ID: {create_issue.id}"
+        return f"Anfrage erfolgreich erstellt✔️ with ID: {create_issue.id}"
 
     return None
 

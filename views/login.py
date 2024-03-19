@@ -89,7 +89,7 @@ justify="center"
                             id='login-output',
                             style={
                                 "color": 'red',
-                                "font-size": 25,
+                                "font-size": 20,
                                 "textAlign": "center",
                                 "whiteSpace": "pre-wrap",
                             },
@@ -104,7 +104,22 @@ justify="center",
             ),
             
             html.Br(),
-            html.Br(),
+            
+             dbc.Row(
+                dbc.Col(
+                    html.A("Forgot Password?", href="#", style={"font-size": "14px", "textAlign": "center"}),
+                    width=8,
+                    md={'size': 3, 'offset': 0},
+                    lg={'size': 3, 'offset': 0},
+                    xl={'size': 2, 'offset': 0},
+                ),
+justify="center"
+            ),
+             
+             html.Br(),
+             html.Br(),
+             
+             
             
             dbc.Row(
                 dbc.Col(
@@ -124,16 +139,7 @@ justify="center"
 
             html.Br(),
 
-            dbc.Row(
-                dbc.Col(
-                    html.A("Forgot Password?", href="#", style={"font-size": "12px", "textAlign": "center"}),
-                    width=8,
-                    md={'size': 3, 'offset': 0},
-                    lg={'size': 3, 'offset': 0},
-                    xl={'size': 2, 'offset': 0},
-                ),
-justify="center"
-            ),
+           
 
         ],
         style=CONTAINER_STYLE,

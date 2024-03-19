@@ -1,4 +1,3 @@
-
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
@@ -25,12 +24,12 @@ def layout_azure_landing():
                     [
                         html.Div(
                         ddsih.DangerouslySetInnerHTML(
-                                """<b>Geben sie unten die details ein, um ein Issue zu erstellen</b> """
+                                """Bitte geben Sie alle notwendigen Informationen ein, um eine Anfrage zu erstellen 🚀"""
 
                         ),#<span style="color: rgb(0,83,159)"><b>Submit your issue details here! 🚀📝</b></span>
 
                         style={
-                            "font-size": 45,
+                            "font-size": "3rem",
                             "textAlign": "center",
                             "whiteSpace": "pre-wrap",
                         },   
@@ -43,103 +42,65 @@ def layout_azure_landing():
         html.Br(),
         html.Br(),
         html.Br(),
-        
-        
-        dbc.Row(
-            [
-                dbc.Col(html.Label(['Titel',  html.Span('*', style={'color': 'red'})],style={'font-weight': 'bold', 'font-size': '20px'}), width=4),
-                dbc.Col(dbc.Input( id = 'title',
-                                    type='text',
-                                    #placeholder = 'Issue title',
-                                    className = 'input-text',
-                            
-                                    style = {
-                                        
-                                        'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
-                                       'font-size': '20px',
-                                       'line-height': 'normal',
-                                       'text-align': 'start',
-                                       'letter-spacing': 'normal',
-                                       'color': '#000000',
-                                       'background': '#ffffff',
-                                       'opacity': '0.75',
-                                       'width': '650px',
-                                       'height': '55px',
-                                       'padding': '0px 20px',
-                                       'border-radius': '0px',
-                                       'border': '2px solid rgba(0, 0, 0, 0.3)',
-                                    }
-                                    ),
-                         width={"size":8, "offset":4} 
-                        ), 
-            ], 
-            justify="center",
-        ),
+
+            dbc.Row(
+                dbc.Col(
+                    html.Label(['Titel', html.Span('*', style={'color': 'red'})], 
+                               style={'font-weight': 'bold', 'font-size': '20px'}),
+                    width=12, md=6, lg=6, xl=5,
+                ),justify="center",
+            ),
+            dbc.Row(
+                dbc.Col(
+                    dbc.Input(id='title',
+                              type='text',
+                              className='input-text',
+                              style=input_style_small),
+                    width=12, md=6, lg=6, xl=5,
+                ),
+                justify="center",
+            ),
+
         html.Br(),
         
-        dbc.Row(
-            [
-                dbc.Col(html.Label(['Beschreibung',  html.Span('*', style={'color': 'red'})],  style={'font-weight': 'bold', 'font-size': '20px'}), width=4),
-                dbc.Col(dbc.Textarea(id = 'description',
-                                     #placeholder = 'Issue description',
-                                     className = 'input-text',
-                                     
-                                    style = {
-                                        
-                                      'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
-                                       'font-size': '20px',
-                                       'line-height': 'normal',
-                                       'text-align': 'start',
-                                       'letter-spacing': 'normal',
-                                       'color': '#000000',
-                                       'background': '#ffffff',
-                                       'opacity': '0.75',
-                                       'width': '650px',
-                                       'height': '125px',
-                                       'padding': '0px 20px',
-                                       'border-radius': '0px',
-                                       'border': '2px solid rgba(0, 0, 0, 0.3)',
-                                        
-                                    }
-                                     )
-                        ,width={"size":8, "offset":4} 
-                        )
-             ], 
-             justify="center",
-        ),
+            dbc.Row(
+                dbc.Col(
+                    html.Label(['Beschreibung', html.Span('*', style={'color': 'red'})], 
+                               style={'font-weight': 'bold', 'font-size': '20px'}),
+                    width=12, md=6, lg=6, xl=5,
+                ),
+                justify="center",
+            ),
+            dbc.Row(
+                dbc.Col(
+                    dbc.Textarea(id='description',
+                                 className='input-text',
+                                 style=input_style),
+                    width=12, md=6, lg=6, xl=5,
+                ),
+                justify="center",
+            ),
         html.Br(),
         
-        dbc.Row(
-            [
-                dbc.Col(html.Label(['Anforderer',  html.Span('*', style={'color': 'red'})] ,style={'font-weight': 'bold', 'font-size': '20px'}), width=4),
-                dbc.Col(dbc.Input( id = 'anforderer',
-                                    type='text',
-                                    placeholder = 'Name des Anforderers',
-                                    className = 'input-text',
-                                    
-                                    style = {
-                                        
-                                        'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
-                                       'font-size': '20px',
-                                       'line-height': 'normal',
-                                       'text-align': 'start',
-                                       'letter-spacing': 'normal',
-                                       'color': '#333333',
-                                       'background': '#ffffff',
-                                       'opacity': '0.75',
-                                       'width': '650px',
-                                       'height': '45px',
-                                       'padding': '0px 20px',
-                                       'border-radius': '0px',
-                                       'border': '2px solid rgba(0, 0, 0, 0.3)',
-                                        
-                                    }
-                                    ),
-                         width={"size":8, "offset":4} 
-                        ), 
-            ], 
-            justify="center",
-        ),
+            dbc.Row(
+                dbc.Col(
+                    html.Label(['Anforderer', html.Span('*', style={'color': 'red'})], 
+                               style={'font-weight': 'bold', 'font-size': '20px'}),
+                    width=12, md=6, lg=6, xl=5,
+                ),
+                justify="center",
+            ),
+            dbc.Row(
+                dbc.Col(
+                    dbc.Input(id='anforderer',
+                              type='text',
+                              placeholder='Name des Anforderers',
+                              className='input-text',
+                              style=input_style_small),
+                    width=12, md=6, lg=6, xl=5,
+                ),
+                justify="center",
+            ),
         html.Br(),
         html.Br(),
         
@@ -150,7 +111,7 @@ def layout_azure_landing():
                         id='error-output-azure',
                         style={
                             "color": 'red',
-                            "font-size": 30,
+                            "font-size": 24,
                             "textAlign": "center",
                             "whiteSpace": "pre-wrap",
                         },
@@ -167,26 +128,29 @@ def layout_azure_landing():
             [
                 dbc.Col(
                     [
-                    dbc.Button('Issue erstellen', 
+                    dbc.Button('Anfrage erstellen', 
                             id= 'create_azure_ticket_button',
                             style = {
                                  'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
-                                    'font-size': '27px',
+                                    'font-size': '20px',
                                     'line-height': 'normal',
-                                       "fontWeight": 800,
+                                       "fontWeight": 600,
                                        'text-align': 'center',
                                        'letter-spacing': 'normal',
                                        'color': '#ffffff',
                                        'background': '#0066ff',
                                        'opacity': '0.75',
-                                       'width': '650px',
+                                       'width': '100%',
                                        'height': '60px',
-                                       'border-radius': '5px',
-                                       'border': '2px solid rgba(0, 0, 0, 0.3)',
+                                       'border-radius': '20px',
+                                       'border': '1px solid rgba(0, 0, 0, 0.3)',
                             },
                              color='primary',
                              ), 
-                    ],width=4
+                    ],                    width=8,
+                    md={'size': 3, 'offset': 0},
+                    lg={'size': 3, 'offset': 0},
+                    xl={'size': 2, 'offset': 0},
                 ),
              ],
              justify='center'
@@ -201,7 +165,7 @@ def layout_azure_landing():
                         id='success-output-azure',
                         style={
                             "color": 'green',
-                            "font-size": 30,
+                            "font-size": 24,
                             "textAlign": "center",
                             "whiteSpace": "pre-wrap",
                         },
@@ -217,3 +181,35 @@ def layout_azure_landing():
     style=CONTAINER_STYLE,
     fluid=True
 )
+    
+input_style = {
+                'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                'font-size': '20px',
+                'line-height': 'normal',
+                'text-align': 'start',
+                'letter-spacing': 'normal',
+                'color': '#000000',
+                'background': '#ffffff',
+                'opacity': '0.75',
+                'width': '100%',
+                'height': '125px',
+                'padding': '0px 20px',
+                'border-radius': '5px',
+                'border': '2px solid rgba(0, 0, 0, 0.3)',
+}
+
+input_style_small = {
+                'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                'font-size': '20px',
+                'line-height': 'normal',
+                'text-align': 'start',
+                'letter-spacing': 'normal',
+                'color': '#000000',
+                'background': '#ffffff',
+                'opacity': '0.75',
+                'width': '100%',
+                'height': '48px',
+                'padding': '0px 20px',
+                'border-radius': '5px',
+                'border': '2px solid rgba(0, 0, 0, 0.3)',
+}
