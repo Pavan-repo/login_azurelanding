@@ -80,6 +80,7 @@ def layout_azure_landing():
                 ),
                 justify="center",
             ),
+            
         html.Br(),
         
             dbc.Row(
