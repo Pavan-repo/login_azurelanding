@@ -156,8 +156,8 @@ input_style = {
     'width': '100%',
     'height': '48px',
     'padding': '0px 20px',
-    'border-radius': '20px',
-    'border': '2px solid rgba(0, 0, 0, 0.3)',
+    'border-radius': '10px',
+    'border': '1px solid rgba(0, 0, 0, 0.3)',
 }
 
 button_style = {
@@ -169,6 +169,6 @@ button_style = {
     'opacity': '0.75',
     'width': '100%',
     'height': '48px',
-    'border-radius': '5px',
-    'border': '2px solid rgba(0, 0, 0, 0.3)',
+    'border-radius': '10px',
+    'border': '1px solid rgba(0, 0, 0, 0.3)',
 }

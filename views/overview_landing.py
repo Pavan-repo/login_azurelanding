@@ -26,8 +26,9 @@ wit_client = connection.clients.get_work_item_tracking_client()
 def overview_landing():
     return dbc.Container(
         [
-            get_header(),
-            get_logo_header(),
+            #get_header(),
+            #get_logo_header(),
+            get_header_overview(),
             html.Br(),
             html.Br(),
             html.Br(),
@@ -80,8 +81,8 @@ def overview_landing():
                                     'background': '#ffffff',
                                     'height': "48px",
                                     'padding': '0px 20px',
-                                    'border-radius': '5px',
-                                    'border': '2px solid rgba(0, 0, 0, 0.3)',
+                                    'border-radius': '10px',
+                                    'border': '1px solid rgba(0, 0, 0, 0.3)',
                                     "font-size": "20px",
                                     'margin-right': '10px',  
                                 },
@@ -94,7 +95,7 @@ def overview_landing():
                                     'height': "46px",
                                     'width': "55px",
                                     "font-size": "20px",
-                                    'border-radius': '5px',
+                                    'border-radius': '10px',
                                     "backgroundColor": '#0066ff',
                                     "border": "none",
                                     "padding": 0,

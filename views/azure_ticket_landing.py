@@ -1,164 +1,44 @@
 import dash
 import dash_bootstrap_components as dbc
-from dash import html
-from dash_dangerously_set_inner_html import DangerouslySetInnerHTML as ddsih
-import dash_dangerously_set_inner_html as ddsih
+from dash import html, dcc, Input, Output, callback, State
+from dash_dangerously_set_inner_html import DangerouslySetInnerHTML
 from helpers.styles import *
 from helpers.layout_utils import *
-from dash import Dash, dcc, html, Input, Output,callback, State
+from dash.exceptions import PreventUpdate
+from helpers.forms import *
 
-#from app_singlepage import app, cache
-import pandas as pd
-def layout_azure_landing():
-    return dbc.Container(
-    [
-        get_header(),
-        get_logo_header(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-        dbc.Row(
-            [
-                dbc.Col(
-                    [
-                        html.Div(
-                        ddsih.DangerouslySetInnerHTML(
-                                """Bitte geben Sie alle notwendigen Informationen ein, um eine Anfrage zu erstellen 🚀"""
+def layout_azure_landing(inhalt="Details..."):
 
-                        ),#<span style="color: rgb(0,83,159)"><b>Submit your issue details here! 🚀📝</b></span>
+    tabs = dbc.Tabs(
+        [
+            dbc.Tab(label="Anfragetyp", active_tab_style={'font-size': '18px'}, tab_id="tab-1", children=[
+                dbc.Container([
+                html.Br(),
+                dbc.Row(dbc.Col(html.P("   Bitte wählen Sie ihr Anliegen", style={'font-weight': 'bold', 'font-size': '20px'}), width={"size": 6, "offset": 0}), justify='center'),
 
-                        style={
-                            "font-size": "3rem",
-                            "textAlign": "center",
-                            "whiteSpace": "pre-wrap",
-                        },   
-                        ),
-                    ],width="auto"
-                    #{"size":10, "offset":1} ,
-                ),
-            ],justify="center",
-        ),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-
-            dbc.Row(
-                dbc.Col(
-                    html.Label(['Titel', html.Span('*', style={'color': 'red'})], 
-                               style={'font-weight': 'bold', 'font-size': '20px'}),
-                    width=12, md=6, lg=6, xl=5,
-                ),justify="center",
-            ),
-            dbc.Row(
-                dbc.Col(
-                    dbc.Input(id='title',
-                              type='text',
-                              className='input-text',
-                              style=input_style_small),
-                    width=12, md=6, lg=6, xl=5,
-                ),
-                justify="center",
-            ),
-
-        html.Br(),
-        
-            dbc.Row(
-                dbc.Col(
-                    html.Label(['Beschreibung', html.Span('*', style={'color': 'red'})], 
-                               style={'font-weight': 'bold', 'font-size': '20px'}),
-                    width=12, md=6, lg=6, xl=5,
-                ),
-                justify="center",
-            ),
-            dbc.Row(
-                dbc.Col(
-                    dbc.Textarea(id='description',
-                                 className='input-text',
-                                 style=input_style),
-                    width=12, md=6, lg=6, xl=5,
-                ),
-                justify="center",
-            ),
-        html.Br(),
-        
-            dbc.Row(
-                dbc.Col(
-                    html.Label(['Anforderer', html.Span('*', style={'color': 'red'})], 
-                               style={'font-weight': 'bold', 'font-size': '20px'}),
-                    width=12, md=6, lg=6, xl=5,
-                ),
-                justify="center",
-            ),
-            dbc.Row(
-                dbc.Col(
-                    dbc.Input(id='anforderer',
-                              type='text',
-                              placeholder='Name des Anforderers',
-                              className='input-text',
-                              style=input_style_small),
-                    width=12, md=6, lg=6, xl=5,
-                ),
-                justify="center",
-            ),
-        html.Br(),
-        html.Br(),
-        
-        dbc.Row(
-            [
-                dbc.Col(
-                    html.Div(
-                        id='error-output-azure',
-                        style={
-                            "color": 'red',
-                            "font-size": 24,
-                            "textAlign": "center",
-                            "whiteSpace": "pre-wrap",
-                        },
+                        dbc.Row(dbc.Col(dbc.Button("ENC", id="btn_enc", n_clicks=0, className="mt-2", style=btn_selection_request_style), width={"size": 4, "offset": 0}), justify='center'),
+                        dbc.Row(dbc.Col(dbc.Button("RPM", id="btn_rpm", className="mt-2", style=btn_selection_request_style), width={"size": 4, "offset": 0}), justify='center'),
+                        dbc.Row(dbc.Col(dbc.Button("Incident", id="btn_incident", className="mt-2", style=btn_selection_request_style), width={"size": 4, "offset": 0}), justify='center'),
+                        dbc.Row(dbc.Col(dbc.Button("Sonstiges", id="btn_misc", className="mt-2", style=btn_selection_request_style), width={"size": 4, "offset": 0}), justify='center'),
+            ], fluid=True),
+            ]),
+            dbc.Tab(label="Details", active_tab_style={'font-size': '18px'}, tab_id="tab-2", children=[
+                html.Div(inhalt, id='tab-content'),
+                dbc.Row(
+                    dbc.Col(
+                        dbc.Button('Anfrage erstellen',
+                                    id='create_azure_ticket_button', 
+                                    color='primary', 
+                                    className='me-1', 
+                                    style= btn_create_request_style),
+                                    width=8, md={'size': 4, 'offset': 0}, lg={'size': 4, 'offset': 0}, xl={'size': 4, 'offset': 0},
                     ),
-                    width={"size":4, "offset":4}  
+                    justify='center'
                 ),
-            ],
-            justify="left",
-        ),
-        html.Br(),
-        
-    
-        dbc.Row(
-            [
-                dbc.Col(
-                    [
-                    dbc.Button('Anfrage erstellen', 
-                            id= 'create_azure_ticket_button',
-                            style = {
-                                 'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
-                                    'font-size': '20px',
-                                    'line-height': 'normal',
-                                       "fontWeight": 600,
-                                       'text-align': 'center',
-                                       'letter-spacing': 'normal',
-                                       'color': '#ffffff',
-                                       'background': '#0066ff',
-                                       'opacity': '0.75',
-                                       'width': '100%',
-                                       'height': '60px',
-                                       'border-radius': '20px',
-                                       'border': '1px solid rgba(0, 0, 0, 0.3)',
-                            },
-                             color='primary',
-                             ), 
-                    ],                    width=8,
-                    md={'size': 3, 'offset': 0},
-                    lg={'size': 3, 'offset': 0},
-                    xl={'size': 2, 'offset': 0},
-                ),
-             ],
-             justify='center'
-        ),
-
-        html.Br(),
-        
-        dbc.Row(
+            ]),  # Tab 2 ist initial deaktiviert
+                         dbc.Row(
             [
                 dbc.Col(
                     html.Div(
@@ -175,41 +55,87 @@ def layout_azure_landing():
             ],
             justify="left",
         ),
-         
         
-    ],
-    style=CONTAINER_STYLE,
-    fluid=True
-)
-    
-input_style = {
-                'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
-                'font-size': '20px',
-                'line-height': 'normal',
-                'text-align': 'start',
-                'letter-spacing': 'normal',
-                'color': '#000000',
-                'background': '#ffffff',
-                'opacity': '0.75',
-                'width': '100%',
-                'height': '125px',
-                'padding': '0px 20px',
-                'border-radius': '5px',
-                'border': '2px solid rgba(0, 0, 0, 0.3)',
-}
+        
+             dbc.Row(
+            [
+                dbc.Col(
+                    html.Div(
+                        id='error-output-azure',
+                        style={
+                            "color": 'red',
+                            "font-size": 24,
+                            "textAlign": "center",
+                            "whiteSpace": "pre-wrap",
+                        },
+                    ),
+                    width={"size":4, "offset":4}  
+                ),
+            ],
+            justify="left",
+        ),  
+        ],
+        style={'fontSize': '14px'},
+        id="tabs",
+        #active_tab="tab-1",
+    )
 
-input_style_small = {
-                'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
-                'font-size': '20px',
-                'line-height': 'normal',
-                'text-align': 'start',
-                'letter-spacing': 'normal',
-                'color': '#000000',
-                'background': '#ffffff',
-                'opacity': '0.75',
-                'width': '100%',
-                'height': '48px',
-                'padding': '0px 20px',
-                'border-radius': '5px',
-                'border': '2px solid rgba(0, 0, 0, 0.3)',
-}
+
+    tab_container = dbc.Row(
+        [
+            dbc.Col(
+                tabs,
+                width=8,
+                md={'size': 8, 'offset': 0},
+                lg={'size': 6, 'offset': 0},
+                xl={'size': 4, 'offset': 0},
+            )
+        ],
+        justify="center",
+    )
+    
+    layout = dbc.Container(
+        [
+            get_header_ticket(),
+            html.Br(),
+            html.Br(),
+            
+            html.Br(),
+            dbc.Row(
+                [
+                    dbc.Col(
+                        html.Div(
+                            DangerouslySetInnerHTML("""Bitte geben Sie alle notwendigen Informationen ein, um eine Anfrage zu erstellen 🚀"""),
+                            style={"font-size": "3rem", "textAlign": "center", "whiteSpace": "pre-wrap"},
+                        ),
+                        width="auto",
+                    ),
+                ],
+                justify="center",
+            ),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            tab_container,
+            #tabs,
+
+        
+        
+        
+        ],
+        style=CONTAINER_STYLE,
+        fluid=True,
+
+        
+    )
+    
+    return layout
+
+
+
+#app.layout = layout_azure_landing(None)
+
+
+
+if __name__ == "__main__":
+    app.run_server(debug=True)

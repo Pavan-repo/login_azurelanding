@@ -3,6 +3,7 @@ from msrest.authentication import BasicAuthentication
 import os
 from dotenv import find_dotenv, load_dotenv
 
+find_dotenv()
 load_dotenv()
 
 
@@ -23,7 +24,7 @@ epic_id = 1060
 area_path = 'NRG_Agile_Enablement'
 work_item_type = "Issue"
 
-def create_azure_issue(title,description,anforderer):
+def create_azure_issue(title,description,anforderer, atc_id, location_id, ne_id, project_id):
     
     new_work_item = [
             {
@@ -42,7 +43,7 @@ def create_azure_issue(title,description,anforderer):
                 "op": "add",
                 "path": "/fields/System.Description",
                 "from": None,
-                "value": f"{description}"
+                "value": f"{description}\nATC-Nummer: {atc_id}\nStandort-Nummer: {location_id}\nNE-Nummer: {ne_id}'\nProjekt-ID:{project_id}"
             },
             {
                 "op": "add",

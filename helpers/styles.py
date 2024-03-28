@@ -108,11 +108,11 @@ base_div_style = {"overflowX": "none", "overflowY": "auto"}
 # the main container style
 CONTAINER_STYLE = {
     "margin": "auto",
-    "padding": "none",
+    "padding": "0",
     "overflowY": "auto",
-    "overflowX": "none",
-    "maxWidth": "auto",
-    "maxHeight": "none",
+    "overflowX": "hidden",
+    "maxWidth": "none",
+    "maxHeight": "100vw",
     "border": "none",
     "backgroundColor": bg_color_1,
 }
@@ -120,7 +120,7 @@ CONTAINER_STYLE = {
 NAVBAR_STYLE = {
     "fontSize": 25,
     "border": "none",
-    "backgroundColor": bg_color_3,
+    "backgroundColor": bg_color_4,
     "color": "white",
     "maxWidth": "auto",
     "fontWeight": 700,
@@ -198,9 +198,9 @@ Ribbon_Style = {
     "fontSize": "20px",
     'width': '100%',
     "border": "none",
-    "color": bg_color_1,
+    "color": bg_color_3,
     "weight": 700,
-    "fontWeight": "bold",
+    "fontWeight": "normal",
     "active": {"background-color": "#4CAF50"},
     #"borderRight": "1.5px solid rgb(246,246,246)",
     "margin": 0.5,
@@ -313,6 +313,72 @@ badge_style = {
     "textAlign": "center",
 }
 
+
+input_style_small = {
+                'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                'font-size': '16px',
+                'line-height': 'normal',
+                'text-align': 'start',
+                'letter-spacing': 'normal',
+                'color': '#000000',
+                'background': '#ffffff',
+                'opacity': '0.75',
+                'width': '100%',
+                'height': '30px',
+                'padding': '0px 5px',
+                'border-radius': '5px',
+                'border': '1px solid rgba(0, 0, 0, 0.3)',
+}
+
+input_style = {
+                'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                'font-size': '16px',
+                'line-height': 'normal',
+                'text-align': 'start',
+                'letter-spacing': 'normal',
+                'color': '#000000',
+                'background': '#ffffff',
+                'opacity': '0.75',
+                'width': '100%',
+                'height': '100px',
+                'padding': '0px 5px',
+                'border-radius': '5px',
+                'border': '1px solid rgba(0, 0, 0, 0.3)',
+            
+}
+
+btn_create_request_style ={
+                            'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                            'font-size': '18px',
+                            'line-height': 'normal',
+                            'fontWeight': 600,
+                            'text-align': 'center',
+                            'letter-spacing': 'normal',
+                            'color': '#ffffff',
+                            'background': '#0066ff',
+                            'opacity': '0.75',
+                            'width': '100%',
+                            'height': '45px',
+                            'border-radius': '10px',
+                            'border': '1px solid rgba(0, 0, 0, 0.3)',
+                        }
+
+
+btn_selection_request_style ={
+                            'font-family': 'Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif',
+                            'font-size': '18px',
+                            'line-height': 'normal',
+                            'fontWeight': 600,
+                            'text-align': 'center',
+                            'letter-spacing': 'normal',
+                            'color': '#ffffff',
+                            'background': '#0066ff',
+                            'opacity': '0.75',
+                            'width': '100%',
+                            'height': '45px',
+                            'border-radius': '10px',
+                            'border': '1px solid rgba(0, 0, 0, 0.3)',
+                        }
 # warning_style = {
 #     "fontSize": "15px",
 #     "fontWeight": 700,

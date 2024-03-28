@@ -15,14 +15,15 @@ warnings.filterwarnings("ignore")
 from helpers.layout_utils import *
 from views.overview_landing import *
 from helpers.create_azure_ticket import create_azure_issue
+from views.azure_ticket_landing import *
 
 from views import login as LoginScreen, azure_ticket_landing as AzureLanding, azure_ticket_landing_rpm as RpmLanding, home as HomeScreen, overview_landing as Overview
 
 app = Dash(
     __name__,
-    title="T-Req's",
+    title="T-Reqs",
     external_stylesheets=[dbc.themes.BOOTSTRAP, "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"],
-    update_title="T-Req's is working",
+    update_title="T-Reqs is working",
     serve_locally=True,
     prevent_initial_callbacks=False,
     routes_pathname_prefix="/",
@@ -42,6 +43,7 @@ base_layout = html.Div(
     style=CONTAINER_STYLE,
 )
 app.layout = base_layout
+
 
 # Callback to render different pages based on URL
 @app.callback(
@@ -85,14 +87,19 @@ def authenticate_user(n_clicks, username_input, password_input):
 @app.callback(
     Output('error-output-azure', 'children'),
     [Input('create_azure_ticket_button', 'n_clicks')],
-    [State('title', 'value'),
-     State('description', 'value'),
-     State('anforderer', 'value'),
+    [
+        State('title', 'value'),
+        State('description', 'value'),
+        State('anforderer', 'value'),
+        State('location_id', 'value'),
+        State('ne_id', 'value'),
+        State('atc_id', 'value'),
+        State('project_id', 'value'),
     ]
 )
-def validate_inputs(n_clicks, title, description, anforderer):
+def validate_inputs(n_clicks, title, description, anforderer, location_id, ne_id, atc_id, project_id):
     if n_clicks:
-        if not all([title, description, anforderer]):
+        if not all([title, description, anforderer, location_id, ne_id, atc_id, project_id]):
             return "Bitte alle benötigten Felder ausfüllen"
     else:
         return None
@@ -105,18 +112,61 @@ def validate_inputs(n_clicks, title, description, anforderer):
         State('title', 'value'),
         State('description', 'value'),
         State('anforderer', 'value'),
+        State('location_id', 'value'),
+        State('ne_id', 'value'),
+        State('atc_id', 'value'),
+        State('project_id', 'value'),
         
     ]
 
 )
 
-def create_azure_issue_callback(n_clicks, title, description, anforderer):
-    if n_clicks and all([title, description, anforderer]):
-        create_issue = create_azure_issue(title, description, anforderer)
-        return f"Anfrage erfolgreich erstellt✔️ with ID: {create_issue.id}"
+
+#Callback zum Wechseln der Tabs und Anzeigen des dynamischen Inhalts
+@app.callback(
+    [Output("tabs", "active_tab"),
+     Output("tab-content", "children")],  # Rückgabe des aktualisierten Inhalts
+    [Input("btn_enc", "n_clicks"),
+     Input("btn_rpm", "n_clicks"),
+     Input("btn_incident", "n_clicks"),
+     Input("btn_misc", "n_clicks")],
+    [State("tabs", "active_tab")],  # Verwendung des aktuellen aktiven Tabs
+)
+def update_tab_content(btn_enc, btn_rpm, btn_incident, btn_misc, active_tab):
+    # Wenn keiner der Buttons geklickt wurde, wird eine Aktualisierung des Inhalts nicht durchgeführt
+    if not any([btn_enc, btn_rpm, btn_incident, btn_misc]):
+        raise PreventUpdate
+
+    # Überprüfen, welcher Button geklickt wurde, und den Inhalt entsprechend aktualisieren
+    ctx = dash.callback_context
+    if ctx.triggered:
+        prop_id = ctx.triggered[0]["prop_id"].split(".")[0]
+        if prop_id == "btn_enc":
+            inhalt = get_form_enc()
+        elif prop_id == "btn_rpm":
+            inhalt = get_form_rpm()
+        elif prop_id == "btn_incident":
+            inhalt = get_form_incident()
+        elif prop_id == "btn_misc":
+            inhalt = get_form_misc()
+
+    # Rückgabe des aktualisierten Inhalts und des aktiven Tabs
+    return "tab-2", inhalt
+
+def create_azure_issue_callback(n_clicks, title, description, anforderer, location_id, ne_id, atc_id, project_id):
+    print("Button wurde geklickt:", n_clicks)
+    print("Titel:", title)
+    print("Beschreibung:", description)
+    print("Anforderer:", anforderer)
+    print("Standort-ID:", location_id)
+    print("NE-Nummer:", ne_id)
+    print("ATC-Nummer:", atc_id)
+    print("Projekt-ID:", project_id)
+    if n_clicks and all([title, description, anforderer, location_id, ne_id, atc_id, project_id]):
+        create_issue = create_azure_issue(title, description, anforderer, location_id, ne_id, atc_id, project_id)
+        return f"Anfrage erfolgreich erstellt ✔️\nID: {create_issue.id}"
 
     return None
-
 
 
 @app.callback(
@@ -231,4 +281,5 @@ def fetch_tickets_and_validate(n_clicks, anforderer):
 
 
 if __name__ == "__main__":
-    app.run()
+    #app.run()
+    app.run_server(debug=True)
