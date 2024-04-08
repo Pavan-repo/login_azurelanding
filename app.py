@@ -118,8 +118,21 @@ def validate_inputs(n_clicks, title, description, anforderer, location_id, ne_id
         State('project_id', 'value'),
         
     ]
-
 )
+def create_azure_issue_callback(n_clicks, title, description, anforderer, location_id, ne_id, atc_id, project_id):
+    print("Button wurde geklickt:", n_clicks)
+    print("Titel:", title)
+    print("Beschreibung:", description)
+    print("Anforderer:", anforderer)
+    print("Standort-ID:", location_id)
+    print("NE-Nummer:", ne_id)
+    print("ATC-Nummer:", atc_id)
+    print("Projekt-ID:", project_id)
+    if n_clicks and all([title, description, anforderer, location_id, ne_id, atc_id, project_id]):
+        create_issue = create_azure_issue(title, description, anforderer, location_id, ne_id, atc_id, project_id)
+        return f"Anfrage erfolgreich erstellt ✔️\nID: {create_issue.id}"
+
+    return None
 
 
 #Callback zum Wechseln der Tabs und Anzeigen des dynamischen Inhalts
@@ -152,21 +165,6 @@ def update_tab_content(btn_enc, btn_rpm, btn_incident, btn_misc, active_tab):
 
     # Rückgabe des aktualisierten Inhalts und des aktiven Tabs
     return "tab-2", inhalt
-
-def create_azure_issue_callback(n_clicks, title, description, anforderer, location_id, ne_id, atc_id, project_id):
-    print("Button wurde geklickt:", n_clicks)
-    print("Titel:", title)
-    print("Beschreibung:", description)
-    print("Anforderer:", anforderer)
-    print("Standort-ID:", location_id)
-    print("NE-Nummer:", ne_id)
-    print("ATC-Nummer:", atc_id)
-    print("Projekt-ID:", project_id)
-    if n_clicks and all([title, description, anforderer, location_id, ne_id, atc_id, project_id]):
-        create_issue = create_azure_issue(title, description, anforderer, location_id, ne_id, atc_id, project_id)
-        return f"Anfrage erfolgreich erstellt ✔️\nID: {create_issue.id}"
-
-    return None
 
 
 @app.callback(

@@ -18,6 +18,45 @@ from dash.exceptions import PreventUpdate
     
 #     return tab_buttons
 
+error_azure = dbc.Row(
+    [
+        dbc.Col(
+            html.Div(
+                id='error-output-azure',
+                style={
+                    "color": 'red',
+                    "font-size": 24,
+                    "textAlign": "center",
+                    "whiteSpace": "pre-wrap",
+                },
+            ),
+            width={"size":4, "offset":4}  
+        ),
+    ],
+    justify="left",
+)
+
+success_azure = dbc.Row(
+    [
+        dbc.Col(
+            html.Div(
+                id='success-output-azure',
+                style={
+                    "color": 'green',
+                    "font-size": 24,
+                    "textAlign": "center",
+                    "whiteSpace": "pre-wrap",
+                },
+            ),
+            width={"size":4, "offset":4} 
+        ),
+    ],
+    justify="left",
+)
+
+
+
+
 def get_form_enc():
     form_enc = dbc.Container([
                                 html.Br(),
@@ -43,6 +82,8 @@ def get_form_enc():
                 dbc.Row(dbc.Col(dbc.Input(id='anforderer', type='text', placeholder='Name des Anforderers', className='input-text', style=input_style_small))),
                 html.Br(),
 
+                error_azure,
+                success_azure,
  
             ], fluid=True)
     return form_enc
@@ -63,6 +104,9 @@ def get_form_rpm():
                 dbc.Row(dbc.Col(dbc.Input(id='anforderer', type='text', placeholder='Name des Anforderers', className='input-text', style=input_style_small))),
                 html.Br(),
 
+                
+                error_azure,
+                success_azure,
  
             ], fluid=True)
     return form_rpm
@@ -113,6 +157,9 @@ def get_form_incident():
                 dbc.Row(dbc.Col(dbc.Input(id='anforderer', type='text', placeholder='Name des Anforderers', className='input-text', style=input_style_small))),
                 html.Br(),
 
+            
+                error_azure,
+                success_azure,
  
             ], fluid=True)
     return form_incident
@@ -133,6 +180,9 @@ def get_form_misc():
                 dbc.Row(dbc.Col(dbc.Input(id='anforderer', type='text', placeholder='Name des Anforderers', className='input-text', style=input_style_small))),
                 html.Br(),
 
+                
+                error_azure,
+                success_azure,
  
             ], fluid=True)
 

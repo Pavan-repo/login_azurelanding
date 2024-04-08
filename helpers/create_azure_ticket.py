@@ -43,7 +43,7 @@ def create_azure_issue(title,description,anforderer, atc_id, location_id, ne_id,
                 "op": "add",
                 "path": "/fields/System.Description",
                 "from": None,
-                "value": f"{description}\nATC-Nummer: {atc_id}\nStandort-Nummer: {location_id}\nNE-Nummer: {ne_id}'\nProjekt-ID:{project_id}"
+                "value": f"{description}  \n ATC-Nummer: {atc_id}  \n Standort-Nummer: {location_id}  \n NE-Nummer: {ne_id} \n Projekt-ID:{project_id}"
             },
             {
                 "op": "add",

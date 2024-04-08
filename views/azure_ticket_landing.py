@@ -38,42 +38,7 @@ def layout_azure_landing(inhalt="Details..."):
                     justify='center'
                 ),
             ]),  # Tab 2 ist initial deaktiviert
-                         dbc.Row(
-            [
-                dbc.Col(
-                    html.Div(
-                        id='success-output-azure',
-                        style={
-                            "color": 'green',
-                            "font-size": 24,
-                            "textAlign": "center",
-                            "whiteSpace": "pre-wrap",
-                        },
-                    ),
-                    width={"size":4, "offset":4} 
-                ),
-            ],
-            justify="left",
-        ),
-        
-        
-             dbc.Row(
-            [
-                dbc.Col(
-                    html.Div(
-                        id='error-output-azure',
-                        style={
-                            "color": 'red',
-                            "font-size": 24,
-                            "textAlign": "center",
-                            "whiteSpace": "pre-wrap",
-                        },
-                    ),
-                    width={"size":4, "offset":4}  
-                ),
-            ],
-            justify="left",
-        ),  
+ 
         ],
         style={'fontSize': '14px'},
         id="tabs",
@@ -106,7 +71,7 @@ def layout_azure_landing(inhalt="Details..."):
                     dbc.Col(
                         html.Div(
                             DangerouslySetInnerHTML("""Bitte geben Sie alle notwendigen Informationen ein, um eine Anfrage zu erstellen 🚀"""),
-                            style={"font-size": "3rem", "textAlign": "center", "whiteSpace": "pre-wrap"},
+                            style={"font-size": "2rem", "textAlign": "center", "whiteSpace": "pre-wrap"},
                         ),
                         width="auto",
                     ),

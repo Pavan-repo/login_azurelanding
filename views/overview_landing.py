@@ -39,11 +39,11 @@ def overview_landing():
                             html.Div(
                                 ddsih.DangerouslySetInnerHTML(
                                     """
-                                    <b>Geben Sie bitte den Anforderer ein, um die erstellten Anforderungen anzuzeigen!</b>
+                                    Geben Sie bitte den Anforderer ein, um die erstellten Anforderungen anzuzeigen!
                                     """
                                 ),
                                 style={
-                                        "font-size": "3rem", 
+                                        "font-size": "2rem", 
                                         "textAlign": "center",
                                        # "whiteSpace": "pre-wrap",
                                 },
@@ -56,7 +56,6 @@ def overview_landing():
                # justify="center",
             ),
 
-            html.Br(),
             html.Br(),
             html.Br(),
 

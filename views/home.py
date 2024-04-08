@@ -37,8 +37,6 @@ def layout_home():
             ),
             html.Br(),
             html.Br(),
-            html.Br(),
-            html.Br(),
             dbc.Row(
                     dbc.Col(
                         dbc.Button(
@@ -48,7 +46,7 @@ def layout_home():
                     size='me-1',
                     href="/Treq-azure",
                     style=btn_selection_request_style),
-                    width=8, md={'size': 4, 'offset': 0}, lg={'size': 4, 'offset': 0}, xl={'size': 3, 'offset': 0},
+                    width=8, md={'size': 4, 'offset': 0}, lg={'size': 3, 'offset': 0}, xl={'size': 2, 'offset': 0},
             ),
             justify='center'
     )
